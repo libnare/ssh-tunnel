@@ -8,7 +8,7 @@ if  [ -z ${SSH_PORT+x} ] ; then
     SSH_PORT="22"
 fi
 
-if [ -z ${LOCAL_PORT+x} ] || [ -z ${REMOTE_PORT+x} ] || [ -z ${SSH_BASTION_HOST+x} ] || [ -z ${SSH_USER+x} ] ; then 
+if [ -z ${LOCAL_PORT+x} ] || [ -z ${REMOTE_PORT+x} ] || [ -z ${SSH_BASTION_HOST+x} ] || [ -z ${SSH_USER+x} ] || [ -z ${$SSH_KEY_PATH+x} ] ; then 
     echo "Some vars are not set"; 
     exit 1
 fi
