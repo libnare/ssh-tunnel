@@ -15,6 +15,8 @@ fi
 
 echo "starting SSH proxy $LOCAL_PORT:$REMOTE_SERVER_IP:$REMOTE_PORT on $SSH_USER@$SSH_BASTION_HOST:$SSH_PORT"
 
+rm -rf /root/.ssh && mkdir /root/.ssh && cp $SSH_KEY_PATH /root/.ssh/ && chmod -R 600 /root/.ssh/*
+
 /usr/bin/ssh \
 -NTC -o ServerAliveInterval=60 \
 -o GatewayPorts=true \
@@ -23,4 +25,3 @@ echo "starting SSH proxy $LOCAL_PORT:$REMOTE_SERVER_IP:$REMOTE_PORT on $SSH_USER
 -L $LOCAL_PORT:$REMOTE_SERVER_IP:$REMOTE_PORT \
 $SSH_USER@$SSH_BASTION_HOST \
 -p $SSH_PORT \
--i $SSH_KEY_PATH
